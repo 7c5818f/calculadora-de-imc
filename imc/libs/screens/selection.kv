@@ -1,0 +1,57 @@
+#:import ScrollEffect kivy.effects.scroll.ScrollEffect
+
+<SelectionScreen>:
+    BoxLayout:
+        size: root.size
+        orientation: 'vertical'
+        reverse: True
+        canvas.before:
+            Color:
+                rgba: rgba('#f6f8fa')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1, None)
+            height: '75dp'
+            canvas.before:
+                Color:
+                    rgba: rgba('#262626')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                background_normal: 'assets/images/go_back_btn_normal.png'
+                background_down: 'assets/images/go_back_btn_down.png'
+                size_hint: (None, None)
+                size: ('75dp', '75dp')
+                on_release:
+                    app.root.current = 'home_screen'
+                    root.manager.transition.direction = 'right'
+            CLabel:
+                pos_hint: {'center_y': 0.5}
+                font_size: '18sp'
+                bold: True
+                color: rgba('#ffffff')
+                text: '   Selecione a base de dados'
+        SCButton:
+            pos_hint: {'center_x': 0.5}
+            size_hint: (1, None)
+            height: '40dp'
+            color: rgba('#287DE8')
+            text: '    + Criar nova base de dados'
+            on_release:
+                app.root.current = 'new_table_screen'
+                root.manager.transition.direction = 'left'
+        Separator:
+            height: '2dp'
+        ScrollView:
+            effect_cls: ScrollEffect
+            size_hint: (1, 1)
+            do_scroll_x: False
+            BoxLayout:
+                id: options
+                size_hint: (1, None)
+                height: self.minimum_size[1]
+                orientation: 'vertical'

@@ -1,0 +1,150 @@
+#:import Factory kivy.factory.Factory
+
+
+<CalculatorScreen>:
+    FloatLayout:
+        size: root.size
+        canvas.before:
+            Color:
+                rgba: rgba('#f6f8fa')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1, None)
+            height: '75dp'
+            pos_hint: {'top': 1, 'left': 1}
+            canvas.before:
+                Color:
+                    rgba: rgba('#262626')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                background_normal: 'assets/images/go_back_btn_normal.png'
+                background_down: 'assets/images/go_back_btn_down.png'
+                size_hint: (None, None)
+                size: ('75dp', '75dp')
+                on_release:
+                    app.root.current = 'home_screen'
+                    root.manager.transition.direction = 'right'
+            CLabel:
+                pos_hint: {'center_y': 0.5}
+                font_size: '18sp'
+                bold: True
+                color: rgba('#ffffff')
+                text: ' Calcular IMC'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (None, None)
+            size: self.minimum_size
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            spacing: '10dp'
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (None, None)
+                size: self.minimum_size
+                spacing: '5dp'
+                Label:
+                    size_hint: (None, None)
+                    size: self.texture_size
+                    color: rgba('#000000')
+                    text: 'Primeiro nome'
+                CCTextInput:
+                    id: first_name
+                    max_length: 255
+                    width: root.ids.birth_date.width
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (None, None)
+                size: self.minimum_size
+                spacing: '5dp'
+                Label:
+                    size_hint: (None, None)
+                    size: self.texture_size
+                    color: rgba('#000000')
+                    text: 'Data de nascimento'
+                BoxLayout:
+                    id: birth_date
+                    orientation: 'horizontal'
+                    size_hint: (None, None)
+                    size: self.minimum_size
+                    spacing: '5dp'
+                    CCTextInput:
+                        id: birth_day
+                        max_length: 2
+                        hint_text: 'dia'
+                    CCTextInput:
+                        id: birth_month
+                        max_length: 2
+                        hint_text: 'mês'
+                    CCTextInput:
+                        id: birth_year
+                        max_length: 4
+                        hint_text: 'ano'
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (None, None)
+                size: self.minimum_size
+                spacing: '5dp'
+                CLabel:
+                    size_hint: (None, None)
+                    size: self.texture_size
+                    color: rgba('#000000')
+                    text: 'Sexo' # ( ͡° ͜ʖ ͡°)
+                BoxLayout:
+                    size_hint: (None, None)
+                    size: self.minimum_size
+                    CCheckBox:
+                        id: male
+                        active: 'on'
+                        group: 'sex'
+                    CLabel:
+                        pos_hint: {'center_y': 0.5}
+                        color: rgba('#000000')
+                        text: ' XY'
+                    Widget:
+                        size_hint: (None, None)
+                        size: (dp(25), dp(24))
+                    CCheckBox:
+                        id: female
+                        group: 'sex'
+                    CLabel:
+                        pos_hint: {'center_y': 0.5}
+                        color: rgba('#000000')
+                        text: ' XX'
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (None, None)
+                size: self.minimum_size
+                spacing: '5dp'
+                CLabel:
+                    size_hint: (None, None)
+                    size: self.texture_size
+                    color: rgba('#000000')
+                    text: 'Altura (em cm)'
+                CCTextInput:
+                    id: height
+                    max_length: 3
+                    hint_text: 'ex: 170'
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (None, None)
+                size: self.minimum_size
+                spacing: '5dp'
+                CLabel:
+                    size_hint: (None, None)
+                    size: self.texture_size
+                    color: rgba('#000000')
+                    text: 'Peso (em kg)'
+                CCTextInput:
+                    id: weight
+                    max_length: 3
+                    hint_text: 'ex: 85.6'
+            CButton:
+                size_hint: (None, None)
+                width: root.ids.birth_date.width
+                height: root.ids.birth_date.height + 15
+                text: 'Calcular IMC'
+                on_release: root.calculate()

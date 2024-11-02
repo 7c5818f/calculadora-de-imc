@@ -1,0 +1,65 @@
+<HomeButton@CButton>:
+    size_hint: (None, None)
+    size: ('250dp', '80dp')
+    pos_hint: {'center_x': 0.5}
+
+
+<HomeScreen>:
+    FloatLayout:
+        size: root.size
+        canvas.before:
+            Color:
+                rgba: rgba('#f6f8fa')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, None)
+            height: '75dp'
+            pos_hint: {'top': 1, 'left': 1}
+            canvas.before:
+                Color:
+                    rgba: rgba('#262626')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'CALCULADORA DE IMC'
+                font_size: '29sp'
+                bold: True
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (None, None)
+            width: '300dp'
+            height: '300dp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            spacing: '25dp'
+            canvas.before:
+                Color:
+                    rgba: rgba('#BFBFBF')
+                Line:
+                    width: 1
+                    rectangle: self.x, self.y, self.width, self.height
+            Label:
+                size_hint: (1, None)
+                height: self.texture_size[1]
+                pos_hint: {'center_x': 0.5}
+                font_size: '18sp'
+                color: rgba('#000000')
+                text: 'O que deseja fazer?'
+            HomeButton:
+                text: 'Visualizar dados'
+                on_release:
+                    root.context = 'selection_for_view'
+                    app.root.current = 'selection_screen'
+                    root.manager.transition.direction = 'left'
+            HomeButton:
+                text: 'Calcular IMC'
+                on_release:
+                    root.context = 'selection_for_calc'
+                    app.root.current = 'selection_screen'
+                    root.manager.transition.direction = 'left'
+            Widget:
+                size_hint: (1, None)
+                height: '22dp'

@@ -1,0 +1,287 @@
+#:import ScrollEffect kivy.effects.scroll.ScrollEffect
+
+
+<StatisticsScreen>:
+    GridLayout:
+        size: root.size
+        cols: 1
+        # spacing: '40dp'
+        canvas.before:
+            Color:
+                rgba: rgba('#f6f8fa')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: (1, None)
+            height: '75dp'
+            pos_hint: {'top': 1, 'left': 1}
+            canvas.before:
+                Color:
+                    rgba: rgba('#262626')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                background_normal: 'assets/images/go_back_btn_normal.png'
+                background_down: 'assets/images/go_back_btn_down.png'
+                size_hint: (None, None)
+                size: ('75dp', '75dp')
+                on_release:
+                    app.root.current = 'selection_screen'
+                    root.manager.transition.direction = 'right'
+            CLabel:
+                pos_hint: {'center_y': 0.5}
+                font_size: '18sp'
+                bold: True
+                color: rgba('#ffffff')
+                text: ' Estatísticas'
+        CLabel:
+            id: table_name
+            padding: ['15dp', '30dp', '15dp', '30dp']
+            font_size: '18sp'
+            bold: True
+        Separator:
+        ScrollView:
+            effect_cls: ScrollEffect
+            size_hint: (1, 1)
+            do_scroll_x: False
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (1, None)
+                height: self.minimum_size[1]
+                spacing: '20dp'
+                padding: ['15dp', '5dp', '15dp', '15dp']
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (1, None)
+                    height: self.minimum_size[1]
+                    spacing: '10dp'
+                    CWLabel:
+                        bold: True
+                        text: '1. Média de IMCs de todas os garotos entre 6 e 15 anos'
+                    BoxLayout:
+                        size_hint: (None, None)
+                        size: self.minimum_size
+                        padding: '20dp'
+                        spacing: '10dp'
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000000')
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        canvas.after:
+                            Color:
+                                rgba: rgba('#BFBFBF')
+                            Line:
+                                width: 2
+                                rectangle: self.x, self.y, self.width, self.height
+                        CLabel:
+                            id: bmi_boys
+                            font_name: 'DejaVuSansMono'
+                            color: rgba('#ffffff')
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (1, None)
+                    height: self.minimum_size[1]
+                    spacing: '10dp'
+                    CWLabel:
+                        bold: True
+                        text: '2. Média de IMCs de todas as garotas entre 6 e 15 anos'
+                    BoxLayout:
+                        size_hint: (None, None)
+                        size: self.minimum_size
+                        padding: '20dp'
+                        spacing: '10dp'
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000000')
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        canvas.after:
+                            Color:
+                                rgba: rgba('#BFBFBF')
+                            Line:
+                                width: 2
+                                rectangle: self.x, self.y, self.width, self.height
+                        CLabel:
+                            id: bmi_girls
+                            font_name: 'DejaVuSansMono'
+                            color: rgba('#ffffff')
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (1, None)
+                    height: self.minimum_size[1]
+                    spacing: '10dp'
+                    CWLabel:
+                        bold: True
+                        text: '3. Média de IMCs de todas os homens entre 16 e 60 anos'
+                    BoxLayout:
+                        size_hint: (None, None)
+                        size: self.minimum_size
+                        padding: '20dp'
+                        spacing: '10dp'
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000000')
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        canvas.after:
+                            Color:
+                                rgba: rgba('#BFBFBF')
+                            Line:
+                                width: 2
+                                rectangle: self.x, self.y, self.width, self.height
+                        CLabel:
+                            id: bmi_xy_adults
+                            font_name: 'DejaVuSansMono'
+                            color: rgba('#ffffff')
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (1, None)
+                    height: self.minimum_size[1]
+                    spacing: '10dp'
+                    CWLabel:
+                        bold: True
+                        text: '4. Média de IMCs de todas as mulheres entre 16 e 60 anos'
+                    BoxLayout:
+                        size_hint: (None, None)
+                        size: self.minimum_size
+                        padding: '20dp'
+                        spacing: '10dp'
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000000')
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        canvas.after:
+                            Color:
+                                rgba: rgba('#BFBFBF')
+                            Line:
+                                width: 2
+                                rectangle: self.x, self.y, self.width, self.height
+                        CLabel:
+                            id: bmi_xx_adults
+                            font_name: 'DejaVuSansMono'
+                            color: rgba('#ffffff')
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (1, None)
+                    height: self.minimum_size[1]
+                    spacing: '10dp'
+                    CWLabel:
+                        bold: True
+                        text: '5. Média de IMCs de todas os adultos entre 16 e 60 anos'
+                    BoxLayout:
+                        size_hint: (None, None)
+                        size: self.minimum_size
+                        padding: '20dp'
+                        spacing: '10dp'
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000000')
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        canvas.after:
+                            Color:
+                                rgba: rgba('#BFBFBF')
+                            Line:
+                                width: 2
+                                rectangle: self.x, self.y, self.width, self.height
+                        CLabel:
+                            id: bmi_adults
+                            font_name: 'DejaVuSansMono'
+                            color: rgba('#ffffff')
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (1, None)
+                    height: self.minimum_size[1]
+                    spacing: '10dp'
+                    CWLabel:
+                        bold: True
+                        text: '6. Média de IMCs de homens maiores de 60 anos'
+                    BoxLayout:
+                        size_hint: (None, None)
+                        size: self.minimum_size
+                        padding: '20dp'
+                        spacing: '10dp'
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000000')
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        canvas.after:
+                            Color:
+                                rgba: rgba('#BFBFBF')
+                            Line:
+                                width: 2
+                                rectangle: self.x, self.y, self.width, self.height
+                        CLabel:
+                            id: bmi_xy_elders
+                            font_name: 'DejaVuSansMono'
+                            color: rgba('#ffffff')
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (1, None)
+                    height: self.minimum_size[1]
+                    spacing: '10dp'
+                    CWLabel:
+                        bold: True
+                        text: '7. Média de IMCs de mulheres maiores de 60 anos'
+                    BoxLayout:
+                        size_hint: (None, None)
+                        size: self.minimum_size
+                        padding: '20dp'
+                        spacing: '10dp'
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000000')
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        canvas.after:
+                            Color:
+                                rgba: rgba('#BFBFBF')
+                            Line:
+                                width: 2
+                                rectangle: self.x, self.y, self.width, self.height
+                        CLabel:
+                            id: bmi_xx_elders
+                            font_name: 'DejaVuSansMono'
+                            color: rgba('#ffffff')
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: (1, None)
+                    height: self.minimum_size[1]
+                    spacing: '10dp'
+                    CWLabel:
+                        bold: True
+                        text: '8. Média de IMCs de todas as pessoas maiores de 60 anos'
+                    BoxLayout:
+                        size_hint: (None, None)
+                        size: self.minimum_size
+                        padding: '20dp'
+                        spacing: '10dp'
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000000')
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        canvas.after:
+                            Color:
+                                rgba: rgba('#BFBFBF')
+                            Line:
+                                width: 2
+                                rectangle: self.x, self.y, self.width, self.height
+                        CLabel:
+                            id: bmi_elders
+                            font_name: 'DejaVuSansMono'
+                            color: rgba('#ffffff')
